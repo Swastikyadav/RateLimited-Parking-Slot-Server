@@ -10,4 +10,6 @@ const parkingSlots = parkingSlotsLength.map((slot, idx) => {
 
 const parkedCars = [];
 
-module.exports = { parkingSlots, parkedCars }
+let requestCount = 0;
+
+module.exports = { parkingSlots, parkedCars, requestCount }
