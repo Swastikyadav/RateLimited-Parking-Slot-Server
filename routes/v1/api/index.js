@@ -7,6 +7,43 @@ const ErrorHandler = require("../../../errors/ErrorHandler");
 
 // Api Routes
 
+// Get car info with carNumber
+router.get("/car/:carNumber", (req, res, next) => {
+  try {
+    const { carNumber } = req.params;
+    const findCar = parkedCars.find(car =>  car.carNo === Number(carNumber));
+    const findCarSlot = parkingSlots.find(slot => slot.carNo === Number(carNumber));
+  
+    if (!findCar) {
+      next(ErrorHandler.notFoundError(`No car found. carNo: ${carNumber} is not parked.`));
+    }
+  
+    if (!!findCar && !!findCarSlot) {
+      res.json(findCarSlot);
+    } 
+  } catch (error) {
+    next(ErrorHandler.serverError(error.message));
+  }
+});
+
+// Get slot info with slot number
+router.get("/slot/:slotNumber", (req, res, next) => {
+  try {
+    const { slotNumber } = req.params;
+    const findSlot = parkingSlots.find(slot => slot.slotNo === Number(slotNumber));
+  
+    if (!findSlot) {
+      next(ErrorHandler.notFoundError(`No parking slot found.`));
+    }
+  
+    if (!!findSlot) {
+      res.json(findSlot);
+    } 
+  } catch (error) {
+    next(ErrorHandler.serverError(error.message));
+  }
+});
+
 // Park a car
 router.post("/car", (req, res, next) => {
   try {
@@ -47,6 +84,7 @@ router.post("/car", (req, res, next) => {
   }
 });
 
+// Unpark the car
 router.delete("/car/:carNumber", (req, res, next) => {
   try {
     const { carNumber } = req.params;
@@ -62,8 +100,8 @@ router.delete("/car/:carNumber", (req, res, next) => {
 
       findCarSlot.availbale = true;
       findCarSlot.carNo = "";
-      
-      console.log(parkedCars, parkingSlots);
+
+      res.json({ message: `Unparked car ${carNumber}. Slot ${findCarSlot.slotNo} is now available for parking.` });
     }
   } catch (error) {
     next(ErrorHandler.serverError(error.message));
