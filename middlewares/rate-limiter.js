@@ -8,7 +8,7 @@ function rateLimiter(req, res, next) {
       throw err;
     }
 
-    console.log(`${ip} has value: ${requestCount}`);
+    // console.log(`${ip}: ${requestCount}`);
 
     if (requestCount > 10) {
       return true
