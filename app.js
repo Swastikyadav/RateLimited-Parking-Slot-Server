@@ -8,16 +8,14 @@ const ErrorHandlerMiddleware = require("./middlewares/error-handler");
 const rateLimiter = require("./middlewares/rate-limiter");
 
 const indexRouter = require("./routes/index");
-const apiRouter = require("./routes/v1/api");
-
-const PORT = process.env.PORT || 3000;
+const apiRouter = require("./routes/api/v1");
 
 app.use(rateLimiter);
 
 app.use(customBodyParser);
 
 app.use("/", indexRouter);
-app.use("/v1/api", apiRouter);
+app.use("/api/v1", apiRouter);
 
 app.use(ErrorHandlerMiddleware);
 
