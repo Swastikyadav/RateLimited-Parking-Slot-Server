@@ -1,6 +1,6 @@
-let { parkedCars } = require("../../../data");
-const { parkingSlots } = require("../../../data");
-const ErrorHandler = require("../../../errors/ErrorHandler");
+let { parkedCars } = require("../data");
+const { parkingSlots } = require("../data");
+const ErrorHandler = require("../errors/ErrorHandler");
 
 module.exports = {
   carInfo: (req, res, next) => {
