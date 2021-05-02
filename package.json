@@ -1,0 +1,11 @@
+{
+  "name": "backend_assignment",
+  "version": "1.0.0",
+  "description": "Rate limited parking slot server",
+  "main": "index.js",
+  "author": "Swastik Yadav",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
