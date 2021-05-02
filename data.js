@@ -8,4 +8,6 @@ const parkingSlots = parkingSlotsLength.map((slot, idx) => {
   }
 });
 
-module.exports = { parkingSlots }
+const parkedCars = [];
+
+module.exports = { parkingSlots, parkedCars }
