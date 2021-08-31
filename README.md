@@ -1,7 +1,6 @@
 
 # NodeJS Rate-Limited Parking slot server.
-Note: I might have delayed in submmiting the assignment
-as the email was in my promotional tab.
+Note: This project uses no database. It only showcases the REST API implementation.
 
 ## Installation 
 Install my-project with yarn. The following command will create node_modules and yarn.lock file.
@@ -58,7 +57,7 @@ Did not use any external package.
 
 Initially I implemented the rate limiter with redis to store the request count value.
 
-But then, as were the instructions not to use any kind of database. Removed the redis implementation and implemented it manually.
+But then, Removed the redis implementation and implemented it manually.
 
 User can't request more than 10 times in 10 seconds.
 
